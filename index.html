@@ -1,1 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ZagArchive</title>
+<style>
+  body { margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#f0f2f5; color:#222; }
 
+  /* HEADER */
+  header { 
+    background:#fff; 
+    padding:15px 40px; 
+    display:flex; 
+    justify-content:flex-end; 
+    align-items:center; 
+    box-shadow:0 2px 6px rgba(0,0,0,0.1); 
+    position: sticky; 
+    top:0; 
+    z-index:100;
+  }
+  nav { position: relative; }
+  header nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; cursor:pointer; }
+  header nav a:hover { color:#1e90ff; }
+
+  /* DROPDOWN */
+  .dropdown { position: relative; display:inline-block; }
+  .dropdown-content {
+    display:none;
+    position:absolute;
+    background:#fff;
+    min-width:160px;
+    box-shadow:0 6px 12px rgba(0,0,0,0.1);
+    border-radius:6px;
+    overflow:hidden;
+    top:35px;
+    z-index:200;
+  }
+  .dropdown-content a {
+    color:#333;
+    padding:10px 15px;
+    display:block;
+    text-decoration:none;
+    font-weight:500;
+  }
+  .dropdown-content a:hover { background:#f0f2f5; color:#1e90ff; }
+  .dropdown:hover .dropdown-content { display:block; }
+
+  /* HERO */
+  .hero { 
+    background: linear-gradient(to right, #ffffff, #e6f0ff);
+    text-align:center; 
+    padding:100px 20px 80px;
+  }
+  .hero h1 { font-size:48px; margin-bottom:15px; font-weight:700; }
+  .hero p { font-size:20px; color:#555; margin-bottom:30px; }
+  .hero button { 
+    background:#1e90ff; color:#fff; border:none; padding:12px 30px; font-size:16px; border-radius:8px; cursor:pointer;
+    transition: background 0.2s;
+  }
+  .hero button:hover { background:#0066cc; }
+
+  /* SECTIONS GRID */
+  .sections-grid { 
+    display:grid; 
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); 
+    gap:25px; 
+    padding:40px 50px;
+  }
+  .section-card { 
+    background:#fff; 
+    padding:35px 25px; 
+    border-radius:15px; 
+    text-align:center; 
+    box-shadow:0 6px 12px rgba(0,0,0,0.08); 
+    cursor:pointer; 
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .section-card:hover { 
+    transform:translateY(-8px); 
+    box-shadow:0 12px 20px rgba(0,0,0,0.12);
+  }
+  .section-card h2 { font-size:22px; margin-bottom:10px; color:#1e90ff; }
+  .section-card p { color:#555; font-size:15px; }
+
+  /* FOOTER */
+  footer { 
+    background:#fff; 
+    padding:40px 50px; 
+    display:flex; 
+    justify-content:space-between; 
+    flex-wrap:wrap; 
+    border-top:1px solid #ddd; 
+    color:#555; 
+  }
+  footer div { margin-bottom:15px; }
+  footer h4 { margin-bottom:8px; font-size:16px; color:#333; }
+  footer a { text-decoration:none; color:#1e90ff; font-size:14px; display:block; margin-bottom:4px; }
+  footer a:hover { text-decoration:underline; }
+
+  /* RESPONSIVE */
+  @media (max-width:768px){
+    .sections-grid { grid-template-columns:1fr; padding:30px; }
+    header { flex-direction:column; align-items:flex-end; }
+    header nav { margin-top:10px; }
+    .dropdown-content { top:40px; }
+    .hero { padding:80px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+
+    <div class="dropdown">
+      <a>Sections &#9662;</a>
+      <div class="dropdown-content">
+        <a href="#homebrew">Homebrew Games</a>
+        <a href="#romhacks">ROM Hacks & Patches</a>
+        <a href="#tools">Tools & Utilities</a>
+        <a href="#resources">Resources</a>
+      </div>
+    </div>
+
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>Welcome to ZagArchive</h1>
+  <p>Your hub for homebrew games, ROM hacks, tools, and more</p>
+  <button onclick="document.getElementById('sections').scrollIntoView({behavior:'smooth'})">Explore Sections</button>
+</section>
+
+<section class="sections-grid" id="sections">
+  <div class="section-card" onclick="document.getElementById('homebrew').scrollIntoView({behavior:'smooth'})">
+    <h2>Homebrew Games</h2>
+    <p>Original community-made games for multiple consoles</p>
+  </div>
+  <div class="section-card" onclick="document.getElementById('romhacks').scrollIntoView({behavior:'smooth'})">
+    <h2>ROM Hacks & Patches</h2>
+    <p>Fan-made modifications and enhancements</p>
+  </div>
+  <div class="section-card" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">
+    <h2>Tools & Utilities</h2>
+    <p>Programs to help you create or patch games</p>
+  </div>
+  <div class="section-card" onclick="document.getElementById('resources').scrollIntoView({behavior:'smooth'})">
+    <h2>Resources</h2>
+    <p>Guides, tutorials, and reference materials</p>
+  </div>
+</section>
+
+<section id="homebrew">
+  <h2>Homebrew Games</h2>
+  <p>This section will display all homebrew games with details and downloads.</p>
+</section>
+
+<section id="romhacks">
+  <h2>ROM Hacks & Patches</h2>
+  <p>This section will show all fan-made ROM hacks and patches.</p>
+</section>
+
+<section id="tools">
+  <h2>Tools & Utilities</h2>
+  <p>All tools and utilities for game creation and patching.</p>
+</section>
+
+<section id="resources">
+  <h2>Resources</h2>
+  <p>Guides, tutorials, and references for developers and players.</p>
+</section>
+
+<footer>
+  <div>
+    <h4>About ZagArchive</h4>
+    <p>A clean hub for homebrew games, ROM hacks, tools, and community resources.</p>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div>
+    <h4>Follow Us</h4>
+    <a href="#">Twitter</a>
+    <a href="#">Discord</a>
+    <a href="#">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
