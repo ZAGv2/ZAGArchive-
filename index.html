@@ -11,13 +11,17 @@
     background:#fff; 
     padding:15px 40px; 
     display:flex; 
-    justify-content:flex-end; 
+    justify-content:space-between; 
     align-items:center; 
     box-shadow:0 2px 6px rgba(0,0,0,0.1); 
     position:sticky; 
     top:0; 
     z-index:100;
   }
+
+  /* SITE TITLE TOP LEFT */
+  .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
+
   nav { position: relative; }
   header nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; cursor:pointer; }
   header nav a:hover { color:#1e90ff; }
@@ -63,7 +67,8 @@
     z-index:0;
   }
   .hero-content { position: relative; z-index:1; }
-  .hero h1 { font-size:48px; margin-bottom:15px; font-weight:700; text-transform: uppercase; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
+  .hero h1 { font-size:48px; margin-bottom:15px; font-weight:700; text-transform:uppercase; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
+  .hero h1 span { margin-left:10px; } /* Adds space between ZAG and Archive */
   .hero p { font-size:20px; color:#fff; margin-bottom:30px; text-shadow:1px 1px 4px rgba(0,0,0,0.5); }
   .hero button {
     background:#1e90ff; color:#fff; border:none; padding:12px 30px; font-size:16px; border-radius:8px; cursor:pointer;
@@ -112,7 +117,7 @@
   /* RESPONSIVE */
   @media (max-width:768px){
     .sections-grid { grid-template-columns:1fr; padding:30px; }
-    header { flex-direction:column; align-items:flex-end; }
+    header { flex-direction:column; align-items:flex-start; }
     header nav { margin-top:10px; }
     .hero { padding:80px 20px 60px; }
     .dropdown-content { top:40px; }
@@ -122,9 +127,9 @@
 <body>
 
 <header>
+  <div class="site-title">ZAGArchive</div>
   <nav>
     <a href="index.html">Home</a>
-
     <div class="dropdown">
       <a id="sections-btn">Sections &#9662;</a>
       <div class="dropdown-content" id="sections-dropdown">
@@ -134,7 +139,6 @@
         <a href="#resources">Resources</a>
       </div>
     </div>
-
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -143,7 +147,7 @@
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1>ZAGArchive</h1>
+    <h1>ZAG <span>Archive</span></h1>
     <p>Your hub for homebrew games, ROM hacks, tools, and more</p>
     <button onclick="document.getElementById('sections-grid').scrollIntoView({behavior:'smooth'})">Explore Sections</button>
   </div>
