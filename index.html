@@ -14,7 +14,7 @@
     justify-content:flex-end; 
     align-items:center; 
     box-shadow:0 2px 6px rgba(0,0,0,0.1); 
-    position: sticky; 
+    position:sticky; 
     top:0; 
     z-index:100;
   }
@@ -43,54 +43,66 @@
     font-weight:500;
   }
   .dropdown-content a:hover { background:#f0f2f5; color:#1e90ff; }
-  .dropdown:hover .dropdown-content { display:block; }
 
   /* HERO */
-  .hero { 
-    background: linear-gradient(to right, #ffffff, #e6f0ff);
-    text-align:center; 
-    padding:100px 20px 80px;
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 120px 20px 80px;
+    color: #fff;
+    overflow: hidden;
   }
-  .hero h1 { font-size:48px; margin-bottom:15px; font-weight:700; text-transform: uppercase; }
-  .hero p { font-size:20px; color:#555; margin-bottom:30px; }
-  .hero button { 
+  .hero-bg {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: url("https://a06ebc596d32d45fd7413758657699bb.r2.cloudflarestorage.com/prod-wombo-paint/exports/dfff6321-08c7-49c5-8d6f-5bb063888a54/published.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=e425f64d36d5345f7832530a74d56c66%2F20260302%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260302T192834Z&X-Amz-Expires=120000&X-Amz-SignedHeaders=host&X-Amz-Signature=55473b87a0edab45920255db40cf858e1b94b3c43cdab963cda0e55ba6c38b89") center/cover no-repeat;
+    filter: brightness(0.6);
+    z-index:0;
+  }
+  .hero-content { position: relative; z-index:1; }
+  .hero h1 { font-size:48px; margin-bottom:15px; font-weight:700; text-transform: uppercase; text-shadow:2px 2px 6px rgba(0,0,0,0.7); }
+  .hero p { font-size:20px; color:#fff; margin-bottom:30px; text-shadow:1px 1px 4px rgba(0,0,0,0.5); }
+  .hero button {
     background:#1e90ff; color:#fff; border:none; padding:12px 30px; font-size:16px; border-radius:8px; cursor:pointer;
     transition: background 0.2s;
   }
   .hero button:hover { background:#0066cc; }
 
   /* SECTIONS GRID */
-  .sections-grid { 
-    display:grid; 
-    grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); 
-    gap:25px; 
+  .sections-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:25px;
     padding:40px 50px;
   }
-  .section-card { 
-    background:#fff; 
-    padding:35px 25px; 
-    border-radius:15px; 
-    text-align:center; 
-    box-shadow:0 6px 12px rgba(0,0,0,0.08); 
-    cursor:pointer; 
+  .section-card {
+    background:#fff;
+    padding:35px 25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 6px 12px rgba(0,0,0,0.08);
+    cursor:pointer;
     transition: transform 0.3s, box-shadow 0.3s;
   }
-  .section-card:hover { 
-    transform:translateY(-8px); 
+  .section-card:hover {
+    transform:translateY(-8px);
     box-shadow:0 12px 20px rgba(0,0,0,0.12);
   }
   .section-card h2 { font-size:22px; margin-bottom:10px; color:#1e90ff; }
   .section-card p { color:#555; font-size:15px; }
 
   /* FOOTER */
-  footer { 
-    background:#fff; 
-    padding:40px 50px; 
-    display:flex; 
-    justify-content:space-between; 
-    flex-wrap:wrap; 
-    border-top:1px solid #ddd; 
-    color:#555; 
+  footer {
+    background:#fff;
+    padding:40px 50px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    border-top:1px solid #ddd;
+    color:#555;
   }
   footer div { margin-bottom:15px; }
   footer h4 { margin-bottom:8px; font-size:16px; color:#333; }
@@ -102,8 +114,8 @@
     .sections-grid { grid-template-columns:1fr; padding:30px; }
     header { flex-direction:column; align-items:flex-end; }
     header nav { margin-top:10px; }
-    .dropdown-content { top:40px; }
     .hero { padding:80px 20px 60px; }
+    .dropdown-content { top:40px; }
   }
 </style>
 </head>
@@ -112,11 +124,10 @@
 <header>
   <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
 
     <div class="dropdown">
-      <a>Sections &#9662;</a>
-      <div class="dropdown-content">
+      <a id="sections-btn">Sections &#9662;</a>
+      <div class="dropdown-content" id="sections-dropdown">
         <a href="#homebrew">Homebrew Games</a>
         <a href="#romhacks">ROM Hacks & Patches</a>
         <a href="#tools">Tools & Utilities</a>
@@ -124,14 +135,18 @@
       </div>
     </div>
 
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="hero" id="home">
-  <h1>ZAGArchive</h1>
-  <p>Your hub for homebrew games, ROM hacks, tools, and more</p>
-  <button onclick="document.getElementById('sections').scrollIntoView({behavior:'smooth'})">Explore Sections</button>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>ZAGArchive</h1>
+    <p>Your hub for homebrew games, ROM hacks, tools, and more</p>
+    <button onclick="document.getElementById('sections').scrollIntoView({behavior:'smooth'})">Explore Sections</button>
+  </div>
 </section>
 
 <section class="sections-grid" id="sections">
@@ -153,30 +168,31 @@
   </div>
 </section>
 
+<!-- Detailed sections (optional, no duplicates) -->
 <section id="homebrew">
   <h2>Homebrew Games</h2>
-  <p>This section will display all homebrew games with details and downloads.</p>
+  <p>Explore community-made games created for various consoles and platforms.</p>
 </section>
 
 <section id="romhacks">
   <h2>ROM Hacks & Patches</h2>
-  <p>This section will show all fan-made ROM hacks and patches.</p>
+  <p>Find fan-made game modifications, translations, and improvements.</p>
 </section>
 
 <section id="tools">
   <h2>Tools & Utilities</h2>
-  <p>All tools and utilities for game creation and patching.</p>
+  <p>Software to help you create, patch, or modify games efficiently.</p>
 </section>
 
 <section id="resources">
   <h2>Resources</h2>
-  <p>Guides, tutorials, and references for developers and players.</p>
+  <p>Guides, tutorials, and references for game development and gameplay.</p>
 </section>
 
 <footer>
   <div>
     <h4>About ZAGArchive</h4>
-    <p>A clean hub for homebrew games, ROM hacks, tools, and community resources.</p>
+    <p>A hub for homebrew games, ROM hacks, tools, and community resources.</p>
   </div>
   <div>
     <h4>Quick Links</h4>
@@ -191,6 +207,30 @@
     <a href="#">GitHub</a>
   </div>
 </footer>
+
+<script>
+  // Toggle dropdown on click
+  const btn = document.getElementById('sections-btn');
+  const dropdown = document.getElementById('sections-dropdown');
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+  });
+
+  // Close dropdown if clicked outside
+  window.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.style.display = 'none';
+    }
+  });
+
+  // Detect mobile device
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  if(isMobile){
+    document.querySelector('.hero button').textContent = "Tap to Explore Sections";
+  }
+</script>
 
 </body>
 </html>
