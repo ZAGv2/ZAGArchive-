@@ -145,48 +145,27 @@
   <div class="hero-content">
     <h1>ZAGArchive</h1>
     <p>Your hub for homebrew games, ROM hacks, tools, and more</p>
-    <button onclick="document.getElementById('sections').scrollIntoView({behavior:'smooth'})">Explore Sections</button>
+    <button onclick="document.getElementById('sections-grid').scrollIntoView({behavior:'smooth'})">Explore Sections</button>
   </div>
 </section>
 
-<section class="sections-grid" id="sections">
-  <div class="section-card" onclick="document.getElementById('homebrew').scrollIntoView({behavior:'smooth'})">
+<section class="sections-grid" id="sections-grid">
+  <div class="section-card">
     <h2>Homebrew Games</h2>
     <p>Original community-made games for multiple consoles</p>
   </div>
-  <div class="section-card" onclick="document.getElementById('romhacks').scrollIntoView({behavior:'smooth'})">
+  <div class="section-card">
     <h2>ROM Hacks & Patches</h2>
     <p>Fan-made modifications and enhancements</p>
   </div>
-  <div class="section-card" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">
+  <div class="section-card">
     <h2>Tools & Utilities</h2>
     <p>Programs to help you create or patch games</p>
   </div>
-  <div class="section-card" onclick="document.getElementById('resources').scrollIntoView({behavior:'smooth'})">
+  <div class="section-card">
     <h2>Resources</h2>
     <p>Guides, tutorials, and reference materials</p>
   </div>
-</section>
-
-<!-- Detailed sections (optional, no duplicates) -->
-<section id="homebrew">
-  <h2>Homebrew Games</h2>
-  <p>Explore community-made games created for various consoles and platforms.</p>
-</section>
-
-<section id="romhacks">
-  <h2>ROM Hacks & Patches</h2>
-  <p>Find fan-made game modifications, translations, and improvements.</p>
-</section>
-
-<section id="tools">
-  <h2>Tools & Utilities</h2>
-  <p>Software to help you create, patch, or modify games efficiently.</p>
-</section>
-
-<section id="resources">
-  <h2>Resources</h2>
-  <p>Guides, tutorials, and references for game development and gameplay.</p>
 </section>
 
 <footer>
@@ -218,7 +197,6 @@
     dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
   });
 
-  // Close dropdown if clicked outside
   window.addEventListener('click', (e) => {
     if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
       dropdown.style.display = 'none';
