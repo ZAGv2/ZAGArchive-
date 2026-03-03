@@ -2,24 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact - ZAGArchive</title>
 <style>
-  body { margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#f0f2f5; color:#222; }
+  body {
+    margin:0;
+    font-family:'Segoe UI', Tahoma, sans-serif;
+    background:#f0f2f5;
+    color:#222;
+  }
 
   /* HEADER */
-  header { 
-    background:#fff; 
-    padding:15px 40px; 
-    display:flex; 
-    justify-content:flex-end; 
-    align-items:center; 
-    box-shadow:0 2px 6px rgba(0,0,0,0.1); 
-    position:sticky; 
-    top:0; 
+  header {
+    background:#fff;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    position:sticky;
+    top:0;
     z-index:100;
+    flex-wrap:wrap;
   }
+
+  .site-title {
+    font-weight:700;
+    font-size:20px;
+    color:#1e90ff;
+    text-transform:uppercase;
+  }
+  .site-title span { margin-left:5px; }
+
   nav { position: relative; }
-  header nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; cursor:pointer; }
+  header nav a {
+    margin-left:25px;
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+    transition: color 0.2s;
+    cursor:pointer;
+  }
   header nav a:hover { color:#1e90ff; }
 
   /* DROPDOWN */
@@ -28,7 +51,7 @@
     display:none;
     position:absolute;
     background:#fff;
-    min-width:160px;
+    min-width:200px;
     box-shadow:0 6px 12px rgba(0,0,0,0.1);
     border-radius:6px;
     overflow:hidden;
@@ -43,49 +66,89 @@
     font-weight:500;
   }
   .dropdown-content a:hover { background:#f0f2f5; color:#1e90ff; }
-  .dropdown:hover .dropdown-content { display:block; }
 
   /* MAIN CONTENT */
-  section { padding:80px 40px; max-width:700px; margin:0 auto; text-align:center; }
-  section h1 { font-size:36px; margin-bottom:20px; color:#1e90ff; text-transform: uppercase; }
-  section p { font-size:18px; color:#555; line-height:1.6; }
+  section {
+    padding:80px 40px;
+    max-width:700px;
+    margin:0 auto;
+    text-align:center;
+  }
+  section h1 {
+    font-size:36px;
+    margin-bottom:20px;
+    color:#1e90ff;
+    text-transform: uppercase;
+  }
+  section p {
+    font-size:18px;
+    color:#555;
+    line-height:1.6;
+  }
 
   /* FOOTER */
-  footer { background:#fff; padding:30px 40px; text-align:center; border-top:1px solid #ddd; color:#555; }
+  footer {
+    background:#fff;
+    padding:30px 40px;
+    text-align:center;
+    border-top:1px solid #ddd;
+    color:#555;
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    header { flex-direction:column; align-items:flex-start; padding:15px 20px; }
+    header nav { margin-top:10px; }
+    header nav a { margin-left:0; margin-right:15px; display:inline-block; margin-bottom:8px; }
+  }
 </style>
 </head>
 <body>
 
 <header>
+  <div class="site-title">ZAG <span>Archive</span></div>
   <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-
     <div class="dropdown">
-      <a>Sections &#9662;</a>
-      <div class="dropdown-content">
+      <a id="sections-btn">Sections &#9662;</a>
+      <div class="dropdown-content" id="sections-dropdown">
         <a href="index.html#homebrew">Homebrew Games</a>
         <a href="index.html#romhacks">ROM Hacks & Patches</a>
-        <a href="index.html#tools">Tools & Utilities</a>
-        <a href="index.html#resources">Resources</a>
       </div>
     </div>
-
+    <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
 <section>
   <h1>ZAGArchive</h1>
-  <p>Have questions, suggestions, or submissions? Reach out to us:  
-  <br><strong>Email:</strong> support@zagarchive.com  
-  <br><strong>Twitter:</strong> <a href="#">@ZAGArchive</a>  
-  <br><strong>Discord:</strong> <a href="#">Join our server</a></p>
+  <p>Have questions, suggestions, or submissions? Reach out to us:
+    <br><strong>Email:</strong> support@zagarchive.com
+    <br><strong>Twitter:</strong> <a href="#">@ZAGArchive</a>
+    <br><strong>Discord:</strong> <a href="#">Join our server</a>
+  </p>
 </section>
 
 <footer>
   &copy; 2026 ZAGArchive
 </footer>
+
+<script>
+  const btn = document.getElementById('sections-btn');
+  const dropdown = document.getElementById('sections-dropdown');
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.style.display = 'none';
+    }
+  });
+</script>
 
 </body>
 </html>
