@@ -26,6 +26,7 @@
   nav { position: relative; display:flex; flex-wrap:wrap; }
   header nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; cursor:pointer; }
   header nav a:hover { color:#1e90ff; }
+  header nav a.active { color:#1e90ff; font-weight:700; }
 
   /* DROPDOWN */
   .dropdown { position: relative; display:inline-block; }
@@ -66,7 +67,6 @@
   <div class="site-title">ZAG <span>Archive</span></div>
   <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
 
     <div class="dropdown">
       <button class="dropbtn">Sections ▼</button>
@@ -78,6 +78,7 @@
       </div>
     </div>
 
+    <a href="about.html" class="active">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
