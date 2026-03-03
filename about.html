@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About - ZAGArchive</title>
 <style>
   body { margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#f0f2f5; color:#222; }
@@ -11,39 +12,37 @@
     background:#fff; 
     padding:15px 40px; 
     display:flex; 
-    justify-content:flex-end; 
+    justify-content:space-between; 
     align-items:center; 
     box-shadow:0 2px 6px rgba(0,0,0,0.1); 
     position:sticky; 
     top:0; 
     z-index:100;
+    flex-wrap:wrap;
   }
-  nav { position: relative; }
+  .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
+  .site-title span { margin-left:5px; }
+
+  nav { position: relative; display:flex; flex-wrap:wrap; }
   header nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; cursor:pointer; }
   header nav a:hover { color:#1e90ff; }
 
   /* DROPDOWN */
   .dropdown { position: relative; display:inline-block; }
+  .dropbtn { margin-left:25px; font-weight:600; background:none; border:none; cursor:pointer; color:#333; font-size:16px; }
   .dropdown-content {
     display:none;
     position:absolute;
     background:#fff;
-    min-width:160px;
+    min-width:200px;
     box-shadow:0 6px 12px rgba(0,0,0,0.1);
     border-radius:6px;
     overflow:hidden;
     top:35px;
     z-index:200;
   }
-  .dropdown-content a {
-    color:#333;
-    padding:10px 15px;
-    display:block;
-    text-decoration:none;
-    font-weight:500;
-  }
+  .dropdown-content a { display:block; padding:10px 15px; text-decoration:none; color:#333; font-weight:500; }
   .dropdown-content a:hover { background:#f0f2f5; color:#1e90ff; }
-  .dropdown:hover .dropdown-content { display:block; }
 
   /* MAIN CONTENT */
   section { padding:80px 40px; max-width:900px; margin:0 auto; text-align:center; }
@@ -52,20 +51,28 @@
 
   /* FOOTER */
   footer { background:#fff; padding:30px 40px; text-align:center; border-top:1px solid #ddd; color:#555; }
+
+  /* RESPONSIVE */
+  @media (max-width:768px){
+    header { flex-direction:column; align-items:flex-start; padding:15px 20px; }
+    header nav { margin-top:10px; flex-direction:column; }
+    header nav a, .dropbtn { margin-left:0; margin-bottom:8px; }
+  }
 </style>
 </head>
 <body>
 
 <header>
+  <div class="site-title">ZAG <span>Archive</span></div>
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
 
     <div class="dropdown">
-      <a>Sections &#9662;</a>
+      <button class="dropbtn">Sections ▼</button>
       <div class="dropdown-content">
-        <a href="index.html#homebrew">Homebrew Games</a>
-        <a href="index.html#romhacks">ROM Hacks & Patches</a>
+        <a href="https://zagv2.github.io/Homebrew-Games/">Homebrew Games</a>
+        <a href="https://zagv2.github.io/romhacks-patches/">ROM Hacks & Patches</a>
         <a href="index.html#tools">Tools & Utilities</a>
         <a href="index.html#resources">Resources</a>
       </div>
@@ -77,14 +84,33 @@
 
 <section>
   <h1>ZAGArchive</h1>
-  <p>ZAGArchive is your central hub for homebrew games, ROM hacks, tools, and resources.  
-  Our mission is to provide a clean and organized platform for community-made content, tutorials, and utilities for gamers and developers.  
-  We aim to make discovering, downloading, and contributing to projects as simple as possible.</p>
+  <p>
+    ZAGArchive is your central hub for homebrew games, ROM hacks, tools, and resources.  
+    Our mission is to provide a clean and organized platform for community-made content, tutorials, and utilities for gamers and developers.  
+    We aim to make discovering, downloading, and contributing to projects as simple as possible.
+  </p>
 </section>
 
 <footer>
   &copy; 2026 ZAGArchive
 </footer>
+
+<script>
+  // Dropdown toggle
+  const btn = document.querySelector('.dropbtn');
+  const dropdown = document.querySelector('.dropdown-content');
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.style.display = 'none';
+    }
+  });
+</script>
 
 </body>
 </html>
