@@ -23,19 +23,19 @@
   .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
   .site-title span { margin-left:5px; }
 
-  nav { position: relative; display:flex; flex-wrap:wrap; }
-  header nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; cursor:pointer; }
-  header nav a:hover { color:#1e90ff; }
-  header nav a.active { color:#1e90ff; font-weight:700; }
+  nav { display:flex; align-items:center; flex-wrap:wrap; }
+  nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; cursor:pointer; }
+  nav a:hover { color:#1e90ff; }
+  nav a.active { color:#1e90ff; font-weight:700; }
 
   /* DROPDOWN */
-  .dropdown { position: relative; display:inline-block; }
+  .dropdown { position:relative; display:inline-block; }
   .dropbtn { margin-left:25px; font-weight:600; background:none; border:none; cursor:pointer; color:#333; font-size:16px; }
   .dropdown-content {
     display:none;
     position:absolute;
     background:#fff;
-    min-width:200px;
+    min-width:160px;
     box-shadow:0 6px 12px rgba(0,0,0,0.1);
     border-radius:6px;
     overflow:hidden;
@@ -55,9 +55,9 @@
 
   /* RESPONSIVE */
   @media (max-width:768px){
-    header { flex-direction:column; align-items:flex-start; padding:15px 20px; }
-    header nav { margin-top:10px; flex-direction:column; }
-    header nav a, .dropbtn { margin-left:0; margin-bottom:8px; }
+    header { flex-direction:row; flex-wrap:wrap; padding:15px 20px; }
+    nav { flex-wrap:wrap; }
+    nav a, .dropbtn { margin-left:0; margin-right:15px; margin-bottom:8px; display:inline-block; }
   }
 </style>
 </head>
@@ -73,8 +73,6 @@
       <div class="dropdown-content">
         <a href="https://zagv2.github.io/Homebrew-Games/">Homebrew Games</a>
         <a href="https://zagv2.github.io/romhacks-patches/">ROM Hacks & Patches</a>
-        <a href="index.html#tools">Tools & Utilities</a>
-        <a href="index.html#resources">Resources</a>
       </div>
     </div>
 
